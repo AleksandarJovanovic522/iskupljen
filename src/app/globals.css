@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+
+@theme inline {
+    --color-primary: #fe131c;
+    --color-black: #050505;
+    --color-white: #ffffff;
+    --font-sans:
+        var(--font-sofia-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        'Helvetica Neue', Arial, sans-serif;
+    --default-font-family: var(--font-sans);
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply min-h-svh bg-black font-sans text-white antialiased;
+    }
+
+    /* Chrome/Safari autofill override — drzi transparentan bg + beli tekst */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-text-fill-color: #ffffff;
+        caret-color: #ffffff;
+        transition:
+            background-color 600000s 0s,
+            color 600000s 0s;
+    }
+}
