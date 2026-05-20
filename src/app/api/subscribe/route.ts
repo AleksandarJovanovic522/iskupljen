@@ -42,7 +42,8 @@ export async function POST(request: Request) {
         from: 'Искупљен <noreply@shop.iskupljen.com>',
         to: recipients,
         subject: 'Нова пријава на Искупљен',
-        react: SubscriptionEmail({ email: parsed.data.email })
+        react: SubscriptionEmail({ email: parsed.data.email }),
+        text: `Нова пријава на Искупљен.\n\nИмејл адреса: ${parsed.data.email}\n`
     })
 
     if (sendResult.error) {
@@ -55,11 +56,21 @@ export async function POST(request: Request) {
 
     try {
         await resend.emails.send({
-            from: 'Искупљен <noreply@shop.iskupljen.com>',
+            from: 'Искупљен <pozdrav@shop.iskupljen.com>',
             to: [parsed.data.email],
             replyTo: 'shop@iskupljen.com',
             subject: 'Хвала што си се пријавио на Искупљен',
-            react: WelcomeEmail()
+            react: WelcomeEmail(),
+            text:
+                'Хвала што си се пријавио на Искупљен.\n\n' +
+                'Обавестићемо те чим искупљење крене.\n\n' +
+                'Одевен у Христа, не у трендове.\n\n' +
+                'Ако не желиш више да примаш мејлове, одговори са „одјава“ на ову поруку.\n',
+            headers: {
+                'List-Unsubscribe': '<mailto:shop@iskupljen.com?subject=unsubscribe>, <https://iskupljen.com/unsubscribe>',
+                'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+                'List-Id': 'Iskupljen Coming Soon <coming-soon.iskupljen.com>'
+            }
         })
     } catch (err) {
         console.error('[subscribe] Welcome mail error:', err)

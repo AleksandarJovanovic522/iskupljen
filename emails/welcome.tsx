@@ -2,19 +2,35 @@ import { Body, Container, Head, Heading, Hr, Html, Img, Preview, Text } from '@r
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://iskupljen.com'
 
+const darkModeStyle = `
+    :root { color-scheme: dark; supported-color-schemes: dark; }
+    body, table, td { background-color: #050505 !important; }
+    a { color: #ffffff !important; }
+    @media (prefers-color-scheme: light) {
+        body, table, td { background-color: #050505 !important; }
+        body * { color: #ffffff !important; }
+    }
+    [data-ogsc] body, [data-ogsc] table, [data-ogsc] td { background-color: #050505 !important; }
+    [data-ogsc] body * { color: #ffffff !important; }
+`
+
 export const WelcomeEmail = () => (
     <Html lang='sr-Cyrl'>
-        <Head />
+        <Head>
+            <meta name='color-scheme' content='dark only' />
+            <meta name='supported-color-schemes' content='dark only' />
+            <style>{darkModeStyle}</style>
+        </Head>
         <Preview>Хвала што си се пријавио на Искупљен.</Preview>
         <Body style={main}>
             <Container style={container}>
-                <Img src={`${BASE_URL}/logo.svg`} alt='Искупљен' width={160} height={62} style={logo} />
+                <Img src={`${BASE_URL}/logo.png`} alt='Искупљен' width={160} height={62} style={logo} />
                 <Hr style={accent} />
                 <Heading as='h1' style={heading}>
                     Хвала што си се пријавио
                 </Heading>
-                <Text style={text}>Обавестићемо те чим Искупљене крене.</Text>
-                <Text style={textMuted}>Одевен у Христа, не у трендове.</Text>
+                <Text style={text}>Обавестићемо те чим искупљење крене.</Text>
+                <Text style={textSecondary}>Одевен у Христа, не у трендове.</Text>
             </Container>
         </Body>
     </Html>
@@ -26,6 +42,7 @@ export default WelcomeEmail
 
 const main = {
     backgroundColor: '#050505',
+    color: '#ffffff',
     fontFamily: '"Sofia Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
     margin: 0,
     padding: '40px 16px'
@@ -36,7 +53,7 @@ const container = {
     margin: '0 auto',
     backgroundColor: '#0a0a0a',
     padding: '40px 32px',
-    border: '1px solid rgba(255, 255, 255, 0.08)'
+    border: '1px solid #1f1f1f'
 }
 
 const logo = {
@@ -61,17 +78,15 @@ const heading = {
 }
 
 const text = {
-    color: 'rgba(255, 255, 255, 0.9)',
+    color: '#ffffff',
     fontSize: '16px',
     lineHeight: '24px',
     margin: '0 0 12px'
 }
 
-const textMuted = {
-    color: 'rgba(255, 255, 255, 0.6)',
+const textSecondary = {
+    color: '#cccccc',
     fontSize: '14px',
-    fontStyle: 'italic' as const,
     lineHeight: '22px',
     margin: '0 0 12px'
 }
-
