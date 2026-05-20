@@ -11,28 +11,64 @@ const sofiaSans = localFont({
     weight: '100 900'
 })
 
+const SITE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://iskupljen.com'
+const TITLE = 'Искупљен — Долазимо ускоро'
+const DESCRIPTION = 'Одевен у Христа, не у трендове. Пријави се за рани приступ Искупљен колекцији.'
+
 export const metadata: Metadata = {
-    title: 'Искупљен — Долазимо ускоро',
-    description: 'Одевен у Христа, не у трендове. Пријави се за рани приступ Искупљен колекцији.',
-    icons: [
-        {
-            url: '/favicon.svg',
-            rel: 'icon',
-            type: 'image/svg+xml'
-        }
-    ],
+    metadataBase: new URL(SITE_URL),
+    title: TITLE,
+    description: DESCRIPTION,
+    applicationName: 'Искупљен',
+    keywords: ['Искупљен', 'Iskupljen', 'православна одећа', 'српски бренд', 'хришћанска мода', 'худи', 'духовна одећа'],
+    authors: [{ name: 'Искупљен' }],
+    creator: 'Искупљен',
+    publisher: 'Искупљен',
+    formatDetection: {
+        email: false,
+        address: false,
+        telephone: false
+    },
+    icons: {
+        icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+        shortcut: '/favicon.svg',
+        apple: '/favicon.svg'
+    },
+    alternates: {
+        canonical: '/'
+    },
     openGraph: {
-        title: 'Искупљен — Долазимо ускоро',
-        description: 'Одевен у Христа, не у трендове. Пријави се за рани приступ Искупљен колекцији.',
-        url: 'https://iskupljen.com',
+        title: TITLE,
+        description: DESCRIPTION,
+        url: SITE_URL,
         siteName: 'Искупљен',
         type: 'website',
-        locale: 'sr_RS'
+        locale: 'sr_RS',
+        images: [
+            {
+                url: '/iskupljen.webp',
+                width: 2400,
+                height: 1280,
+                alt: 'Искупљен — Одевен у Христа, не у трендове',
+                type: 'image/webp'
+            }
+        ]
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Искупљен — Долазимо ускоро',
-        description: 'Одевен у Христа, не у трендове. Пријави се за рани приступ Искупљен колекцији.'
+        title: TITLE,
+        description: DESCRIPTION,
+        images: ['/iskupljen.webp']
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-image-preview': 'large',
+            'max-snippet': -1
+        }
     }
 }
 
