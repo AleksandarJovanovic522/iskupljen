@@ -26,7 +26,7 @@ export const SubscriptionEmail = ({ email }: SubscriptionEmailProps) => (
         <Preview>Нова пријава на Искупљен: {email}</Preview>
         <Body style={main}>
             <Container style={container}>
-                <Img src='https://iskupljen.com/logo.png' alt='Искупљен' width={160} height={62} style={logo} />
+                <Img src='https://www.iskupljen.com/logo.png' alt='Искупљен' width={160} height={62} style={logo} />
                 <Hr style={accent} />
                 <Heading as='h1' style={heading}>
                     Нова пријава
