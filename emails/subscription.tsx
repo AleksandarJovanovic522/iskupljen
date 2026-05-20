@@ -2,15 +2,10 @@ import { Body, Container, Head, Heading, Hr, Html, Img, Preview, Section, Text }
 
 const darkModeStyle = `
     :root { color-scheme: dark !important; supported-color-schemes: dark !important; }
-    body, table, td, .email-bg, .email-card { background-color: #050505 !important; }
-    .email-card { background-color: #0a0a0a !important; }
+    body, table, td, .email-bg, .email-card { background-color: #0a0a0a !important; }
     body, body * { color: #ffffff !important; }
     .text-secondary { color: #cccccc !important; }
     a { color: #ffffff !important; }
-    [data-ogsc] body, [data-ogsc] table, [data-ogsc] td, [data-ogsc] .email-bg { background-color: #050505 !important; }
-    [data-ogsc] .email-card { background-color: #0a0a0a !important; }
-    [data-ogsc] body, [data-ogsc] body * { color: #ffffff !important; }
-    [data-ogsc] .text-secondary { color: #cccccc !important; }
 `
 
 interface SubscriptionEmailProps {
@@ -54,7 +49,7 @@ SubscriptionEmail.PreviewProps = { email: 'test@example.com' } as SubscriptionEm
 export default SubscriptionEmail
 
 const main = {
-    backgroundColor: '#050505',
+    backgroundColor: '#0a0a0a',
     color: '#ffffff',
     fontFamily: '"Sofia Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
     margin: 0,
@@ -64,8 +59,7 @@ const main = {
 const container = {
     maxWidth: '560px',
     margin: '0 auto',
-    backgroundColor: '#0a0a0a',
-    border: '1px solid #1f1f1f'
+    backgroundColor: '#0a0a0a'
 }
 
 const inner = {
