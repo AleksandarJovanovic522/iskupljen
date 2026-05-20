@@ -6,6 +6,10 @@ const darkModeStyle = `
     body, body * { color: #ffffff !important; }
     .text-secondary { color: #cccccc !important; }
     a { color: #ffffff !important; }
+    u + .body .gmail-blend-screen { background: #000000; mix-blend-mode: screen; }
+    u + .body .gmail-blend-screen > * { mix-blend-mode: none; }
+    u + .body .gmail-blend-difference { background: #000000; mix-blend-mode: difference; }
+    u + .body .gmail-blend-difference > * { mix-blend-mode: none; }
 `
 
 export const WelcomeEmail = () => (
@@ -16,26 +20,30 @@ export const WelcomeEmail = () => (
             <style>{darkModeStyle}</style>
         </Head>
         <Preview>Хвала што си се пријавио на Искупљен.</Preview>
-        <Body style={main} className='email-bg'>
-            <Container style={container} className='email-card'>
-                <Section style={inner}>
-                    <Img
-                        src='https://www.iskupljen.com/logo.png'
-                        alt='Искупљен'
-                        width={160}
-                        height={62}
-                        style={logo}
-                    />
-                    <Hr style={accent} />
-                    <Heading as='h1' style={heading}>
-                        Хвала што сте се пријавили
-                    </Heading>
-                    <Text style={text}>Обавестићемо вас чим искупљење крене.</Text>
-                    <Text style={textSecondary} className='text-secondary'>
-                        Одевен у Христа, не у трендове.
-                    </Text>
-                </Section>
-            </Container>
+        <Body style={main} className='body email-bg'>
+            <div className='gmail-blend-screen'>
+                <div className='gmail-blend-difference'>
+                    <Container style={container} className='email-card'>
+                        <Section style={inner}>
+                            <Img
+                                src='https://www.iskupljen.com/logo.png'
+                                alt='Искупљен'
+                                width={160}
+                                height={62}
+                                style={logo}
+                            />
+                            <Hr style={accent} />
+                            <Heading as='h1' style={heading}>
+                                Хвала што сте се пријавили
+                            </Heading>
+                            <Text style={text}>Обавестићемо вас чим искупљење крене.</Text>
+                            <Text style={textSecondary} className='text-secondary'>
+                                Одевен у Христа, не у трендове.
+                            </Text>
+                        </Section>
+                    </Container>
+                </div>
+            </div>
         </Body>
     </Html>
 )
@@ -45,7 +53,8 @@ WelcomeEmail.PreviewProps = {} as Record<string, never>
 export default WelcomeEmail
 
 const main = {
-    backgroundColor: '#0a0a0a',
+    background: '#0a0a0a',
+    backgroundImage: 'linear-gradient(#0a0a0a, #0a0a0a)',
     color: '#ffffff',
     fontFamily: '"Sofia Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
     margin: 0,
@@ -55,7 +64,8 @@ const main = {
 const container = {
     maxWidth: '560px',
     margin: '0 auto',
-    backgroundColor: '#0a0a0a'
+    background: '#0a0a0a',
+    backgroundImage: 'linear-gradient(#0a0a0a, #0a0a0a)'
 }
 
 const inner = {
