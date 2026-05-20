@@ -2,14 +2,10 @@ import { Body, Container, Head, Heading, Hr, Html, Img, Preview, Section, Text }
 
 const darkModeStyle = `
     :root { color-scheme: dark !important; supported-color-schemes: dark !important; }
-    body, table, td, .email-bg, .email-card { background-color: #0a0a0a !important; }
+    body, table, td, .email-bg, .email-card { background-color: #050505 !important; }
     body, body * { color: #ffffff !important; }
     .text-secondary { color: #cccccc !important; }
     a { color: #ffffff !important; }
-    u + .body .gmail-blend-screen { background: #000000; mix-blend-mode: screen; }
-    u + .body .gmail-blend-screen > * { mix-blend-mode: none; }
-    u + .body .gmail-blend-difference { background: #000000; mix-blend-mode: difference; }
-    u + .body .gmail-blend-difference > * { mix-blend-mode: none; }
 `
 
 interface SubscriptionEmailProps {
@@ -24,30 +20,26 @@ export const SubscriptionEmail = ({ email }: SubscriptionEmailProps) => (
             <style>{darkModeStyle}</style>
         </Head>
         <Preview>Нова пријава на Искупљен: {email}</Preview>
-        <Body style={main} className='body email-bg'>
-            <div className='gmail-blend-screen'>
-                <div className='gmail-blend-difference'>
-                    <Container style={container} className='email-card'>
-                        <Section style={inner}>
-                            <Img
-                                src='https://www.iskupljen.com/logo.png'
-                                alt='Искупљен'
-                                width={160}
-                                height={62}
-                                style={logo}
-                            />
-                            <Hr style={accent} />
-                            <Heading as='h1' style={heading}>
-                                Нова пријава
-                            </Heading>
-                            <Text style={label} className='text-secondary'>
-                                Имејл адреса
-                            </Text>
-                            <Text style={value}>{email}</Text>
-                        </Section>
-                    </Container>
-                </div>
-            </div>
+        <Body style={main} className='email-bg'>
+            <Container style={container} className='email-card'>
+                <Section style={inner}>
+                    <Img
+                        src='https://www.iskupljen.com/mail-logo.png'
+                        alt='Искупљен'
+                        width={200}
+                        height={105}
+                        style={logo}
+                    />
+                    <Hr style={accent} />
+                    <Heading as='h1' style={heading}>
+                        Нова пријава
+                    </Heading>
+                    <Text style={label} className='text-secondary'>
+                        Имејл адреса
+                    </Text>
+                    <Text style={value}>{email}</Text>
+                </Section>
+            </Container>
         </Body>
     </Html>
 )
@@ -57,8 +49,7 @@ SubscriptionEmail.PreviewProps = { email: 'test@example.com' } as SubscriptionEm
 export default SubscriptionEmail
 
 const main = {
-    background: '#0a0a0a',
-    backgroundImage: 'linear-gradient(#0a0a0a, #0a0a0a)',
+    backgroundColor: '#050505',
     color: '#ffffff',
     fontFamily: '"Sofia Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
     margin: 0,
@@ -68,8 +59,7 @@ const main = {
 const container = {
     maxWidth: '560px',
     margin: '0 auto',
-    background: '#0a0a0a',
-    backgroundImage: 'linear-gradient(#0a0a0a, #0a0a0a)'
+    backgroundColor: '#050505'
 }
 
 const inner = {
