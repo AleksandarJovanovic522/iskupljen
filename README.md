@@ -41,7 +41,7 @@ public/
 ├─ icons/                     # SVG copies for direct fetch if needed
 ├─ logo.svg                   # Horizontal brand mark
 ├─ logo-vertical.svg          # Vertical brand mark (mobile header)
-├─ iskupljen.webp             # Open Graph / social preview image
+├─ iskupljen.png             # Open Graph / social preview image
 └─ favicon.svg
 ```
 
@@ -81,21 +81,21 @@ If logos look broken in the preview, also run `pnpm dev` so the email fetches `l
 
 ## Scripts
 
-| Command | What it does |
-|---|---|
-| `pnpm dev` | Next dev server on `:3000` |
-| `pnpm build` | Production build + type check |
-| `pnpm start` | Run production build |
-| `pnpm lint` | ESLint (flat config, Next.js + TypeScript rules) |
+| Command      | What it does                                          |
+| ------------ | ----------------------------------------------------- |
+| `pnpm dev`   | Next dev server on `:3000`                            |
+| `pnpm build` | Production build + type check                         |
+| `pnpm start` | Run production build                                  |
+| `pnpm lint`  | ESLint (flat config, Next.js + TypeScript rules)      |
 | `pnpm email` | React Email preview server for templates in `/emails` |
 
 ## Environment variables
 
-| Name | Required | Description |
-|---|---|---|
-| `RESEND_API_KEY` | Yes | API key from the Resend dashboard. Without it, the API route returns 500. |
-| `SUBSCRIBE_TO_EMAILS` | No | Comma-separated recipient list for notification mail. Empty falls back to `shop@iskupljen.com,gagiac@gmail.com`. |
-| `NEXT_PUBLIC_BASE_URL` | Yes | Public site URL. Used for OG metadata canonical URLs and as `<Img>` base in email templates. Defaults to `https://iskupljen.com` if not set. |
+| Name                   | Required | Description                                                                                                                                  |
+| ---------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `RESEND_API_KEY`       | Yes      | API key from the Resend dashboard. Without it, the API route returns 500.                                                                    |
+| `SUBSCRIBE_TO_EMAILS`  | No       | Comma-separated recipient list for notification mail. Empty falls back to `shop@iskupljen.com,gagiac@gmail.com`.                             |
+| `NEXT_PUBLIC_BASE_URL` | Yes      | Public site URL. Used for OG metadata canonical URLs and as `<Img>` base in email templates. Defaults to `https://iskupljen.com` if not set. |
 
 `.env.local` is git-ignored; commit only `.env.example`.
 
@@ -116,9 +116,9 @@ Every successful subscription is automatically added to the default Resend **Aud
 1. Push to GitHub (this repo).
 2. Import the repo into Vercel.
 3. In **Project Settings → Environment Variables**, set:
-   - `RESEND_API_KEY`
-   - `SUBSCRIBE_TO_EMAILS` (e.g. `shop@iskupljen.com,gagiac@gmail.com`)
-   - `NEXT_PUBLIC_BASE_URL` (e.g. `https://iskupljen.com`)
+    - `RESEND_API_KEY`
+    - `SUBSCRIBE_TO_EMAILS` (e.g. `shop@iskupljen.com,gagiac@gmail.com`)
+    - `NEXT_PUBLIC_BASE_URL` (e.g. `https://iskupljen.com`)
 4. In **Project Settings → Domains**, add `iskupljen.com` and set the DNS A/CNAME records Vercel shows.
 5. In **Project Settings → Analytics**, enable Vercel Analytics (free for hobby).
 
@@ -142,7 +142,7 @@ When you set up Hostinger forwarding (`shop@iskupljen.com` → `gagiac@gmail.com
 
 ## OG / social preview
 
-`public/iskupljen.webp` (2400×1280, ~1.875:1) is used as the Open Graph and Twitter card image. After deploy, test the preview with:
+`public/iskupljen.png` (2400×1280, ~1.875:1) is used as the Open Graph and Twitter card image. After deploy, test the preview with:
 
 - Facebook Sharing Debugger — <https://developers.facebook.com/tools/debug/>
 - Twitter Card Validator — <https://cards-dev.twitter.com/validator>

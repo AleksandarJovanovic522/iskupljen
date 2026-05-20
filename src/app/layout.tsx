@@ -46,7 +46,7 @@ export const metadata: Metadata = {
         locale: 'sr_RS',
         images: [
             {
-                url: '/iskupljen.webp',
+                url: '/iskupljen.png',
                 width: 2400,
                 height: 1280,
                 alt: 'Искупљен — Одевен у Христа, не у трендове',
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: TITLE,
         description: DESCRIPTION,
-        images: ['/iskupljen.webp']
+        images: ['/iskupljen.png']
     },
     robots: {
         index: true,
