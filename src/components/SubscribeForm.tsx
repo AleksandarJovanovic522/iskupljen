@@ -18,6 +18,7 @@ export function SubscribeForm() {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors }
     } = useForm<SubscribeInput>({
         resolver: zodResolver(subscribeSchema),
@@ -37,6 +38,7 @@ export function SubscribeForm() {
             const data = (await res.json().catch(() => ({}))) as { ok?: boolean; message?: string }
             if (res.ok && data.ok) {
                 setStatus('success')
+                reset()
                 return
             }
             setStatus('error')

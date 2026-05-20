@@ -59,13 +59,12 @@ export async function POST(request: Request) {
             from: 'Искупљен <pozdrav@shop.iskupljen.com>',
             to: [parsed.data.email],
             replyTo: 'shop@iskupljen.com',
-            subject: 'Хвала што си се пријавио на Искупљен',
+            subject: 'Хвала што сте се пријавили на Искупљен',
             react: WelcomeEmail(),
             text:
-                'Хвала што си се пријавио на Искупљен.\n\n' +
-                'Обавестићемо те чим искупљење крене.\n\n' +
-                'Одевен у Христа, не у трендове.\n\n' +
-                'Ако не желиш више да примаш мејлове, одговори са „одјава“ на ову поруку.\n',
+                'Хвала што сте се пријавили на Искупљен.\n\n' +
+                'Обавестићемо вас чим искупљење крене.\n\n' +
+                'Одевен у Христа, не у трендове.\n',
             headers: {
                 'List-Unsubscribe': '<mailto:shop@iskupljen.com?subject=unsubscribe>, <https://iskupljen.com/unsubscribe>',
                 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
