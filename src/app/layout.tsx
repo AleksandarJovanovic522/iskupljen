@@ -14,6 +14,7 @@ const sofiaSans = localFont({
 const SITE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://iskupljen.com'
 const TITLE = 'Искупљен — Долазимо ускоро'
 const DESCRIPTION = 'Одевен у Христа, не у трендове. Пријави се за рани приступ Искупљен колекцији.'
+const OG_IMAGE_URL = `${SITE_URL}/iskupljen.png`
 
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),
@@ -46,11 +47,11 @@ export const metadata: Metadata = {
         locale: 'sr_RS',
         images: [
             {
-                url: '/iskupljen.png',
-                width: 2400,
-                height: 1280,
+                url: OG_IMAGE_URL,
+                width: 1200,
+                height: 640,
                 alt: 'Искупљен — Одевен у Христа, не у трендове',
-                type: 'image/webp'
+                type: 'image/png'
             }
         ]
     },
@@ -58,7 +59,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: TITLE,
         description: DESCRIPTION,
-        images: ['/iskupljen.png']
+        images: [OG_IMAGE_URL]
     },
     robots: {
         index: true,
