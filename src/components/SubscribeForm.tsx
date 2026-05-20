@@ -117,7 +117,7 @@ export function SubscribeForm() {
                     {/* Success / error message — above button on mobile, hidden on xl (xl button is inset) */}
                     {status === 'success' && (
                         <p role='status' className='mt-4 text-center font-sans text-sm font-semibold text-white xl:hidden'>
-                            Успешно сте пријавили!
+                            Успешно сте се пријавили!
                         </p>
                     )}
                     {status === 'error' && serverMessage && (
@@ -131,15 +131,18 @@ export function SubscribeForm() {
                         type='submit'
                         disabled={status === 'pending'}
                         className='mt-4 flex h-13.5 w-full cursor-pointer items-center justify-center gap-2 bg-black px-6 font-sans text-base leading-6 font-medium tracking-[3.2px] whitespace-nowrap text-white uppercase transition-[clip-path,opacity] duration-200 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 xl:absolute xl:top-2.25 xl:right-2.25 xl:bottom-2.25 xl:mt-0 xl:h-auto xl:w-auto xl:tracking-normal xl:normal-case xl:[clip-path:polygon(12px_0,100%_0,calc(100%-12px)_100%,0_100%)] xl:hover:[clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]'>
-                        {status === 'pending' && <SpinnerIcon aria-hidden className='h-6 w-6 text-white' />}
-                        <span>{status === 'pending' ? 'Шаљемо…' : 'Обавести ме'}</span>
+                        {status === 'pending' ? (
+                            <SpinnerIcon aria-hidden className='h-6 w-6 text-white' />
+                        ) : (
+                            <span>Обавести ме</span>
+                        )}
                     </button>
                 </div>
 
                 {/* xl-only inline status row below the form (button is inset on xl, so the message goes here) */}
                 {status === 'success' && (
                     <p role='status' className='mt-4 hidden text-center font-sans text-sm font-semibold text-white xl:block'>
-                        Успешно сте пријавили!
+                        Успешно сте се пријавили!
                     </p>
                 )}
                 {status === 'error' && serverMessage && (
