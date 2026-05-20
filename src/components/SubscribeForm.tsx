@@ -133,11 +133,17 @@ export function SubscribeForm() {
                         type='submit'
                         disabled={status === 'pending'}
                         className='mt-4 flex h-13.5 w-full cursor-pointer items-center justify-center gap-2 bg-black px-6 font-sans text-base leading-6 font-medium tracking-[3.2px] whitespace-nowrap text-white uppercase transition-[clip-path,opacity] duration-200 hover:opacity-90 disabled:pointer-events-none disabled:opacity-60 xl:absolute xl:top-2.25 xl:right-2.25 xl:bottom-2.25 xl:mt-0 xl:h-auto xl:w-auto xl:tracking-normal xl:normal-case xl:[clip-path:polygon(12px_0,100%_0,calc(100%-12px)_100%,0_100%)] xl:hover:[clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]'>
-                        {status === 'pending' ? (
-                            <SpinnerIcon aria-hidden className='h-6 w-6 text-white' />
-                        ) : (
-                            <span>Обавести ме</span>
-                        )}
+                        <span className='relative inline-flex items-center justify-center'>
+                            <span
+                                aria-hidden={status === 'pending'}
+                                className={`transition-opacity duration-150 ${status === 'pending' ? 'opacity-0' : 'opacity-100'}`}>
+                                Обавести ме
+                            </span>
+                            <SpinnerIcon
+                                aria-hidden
+                                className={`absolute inset-0 m-auto h-6 w-6 text-white transition-opacity duration-150 ${status === 'pending' ? 'opacity-100' : 'opacity-0'}`}
+                            />
+                        </span>
                     </button>
                 </div>
 

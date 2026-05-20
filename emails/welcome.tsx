@@ -1,53 +1,46 @@
-import { Body, Container, Head, Heading, Hr, Html, Img, Preview, Text } from '@react-email/components'
+import { Body, Container, Head, Heading, Hr, Html, Img, Preview, Section, Text } from '@react-email/components'
 
 const darkModeStyle = `
-    :root { color-scheme: light dark; supported-color-schemes: light dark; }
-    .logo-dark { display: block; }
-    .logo-light { display: none; }
-    @media (prefers-color-scheme: dark) {
-        body, table, td { background-color: #050505 !important; }
-        body *:not(.logo-dark):not(.logo-light) { color: #ffffff !important; }
-        .logo-dark { display: none !important; }
-        .logo-light { display: block !important; }
-    }
-    [data-ogsc] body, [data-ogsc] table, [data-ogsc] td { background-color: #050505 !important; }
-    [data-ogsc] body *:not(.logo-dark):not(.logo-light) { color: #ffffff !important; }
-    [data-ogsc] .logo-dark { display: none !important; }
-    [data-ogsc] .logo-light { display: block !important; }
+    :root { color-scheme: dark !important; supported-color-schemes: dark !important; }
+    body, table, td, .email-bg, .email-card { background-color: #050505 !important; }
+    .email-card { background-color: #0a0a0a !important; }
+    body, body * { color: #ffffff !important; }
+    .text-secondary { color: #cccccc !important; }
+    a { color: #ffffff !important; }
+    u + .body .gmail-blend-screen { background: #050505 !important; mix-blend-mode: screen; }
+    [data-ogsc] body, [data-ogsc] table, [data-ogsc] td, [data-ogsc] .email-bg { background-color: #050505 !important; }
+    [data-ogsc] .email-card { background-color: #0a0a0a !important; }
+    [data-ogsc] body, [data-ogsc] body * { color: #ffffff !important; }
+    [data-ogsc] .text-secondary { color: #cccccc !important; }
 `
 
 export const WelcomeEmail = () => (
     <Html lang='sr-Cyrl'>
         <Head>
-            <meta name='color-scheme' content='light dark' />
-            <meta name='supported-color-schemes' content='light dark' />
+            <meta name='color-scheme' content='dark' />
+            <meta name='supported-color-schemes' content='dark' />
             <style>{darkModeStyle}</style>
         </Head>
         <Preview>Хвала што си се пријавио на Искупљен.</Preview>
-        <Body style={main}>
-            <Container style={container}>
-                <Img
-                    src='https://www.iskupljen.com/logo-dark.png'
-                    alt='Искупљен'
-                    width={160}
-                    height={62}
-                    className='logo-dark'
-                    style={logo}
-                />
-                <Img
-                    src='https://www.iskupljen.com/logo.png'
-                    alt='Искупљен'
-                    width={160}
-                    height={62}
-                    className='logo-light'
-                    style={{ ...logo, display: 'none' }}
-                />
-                <Hr style={accent} />
-                <Heading as='h1' style={heading}>
-                    Хвала што сте се пријавили
-                </Heading>
-                <Text style={text}>Обавестићемо вас чим искупљење крене.</Text>
-                <Text style={textSecondary}>Одевен у Христа, не у трендове.</Text>
+        <Body style={main} className='email-bg'>
+            <Container style={container} className='email-card'>
+                <Section style={inner}>
+                    <Img
+                        src='https://www.iskupljen.com/logo.png'
+                        alt='Искупљен'
+                        width={160}
+                        height={62}
+                        style={logo}
+                    />
+                    <Hr style={accent} />
+                    <Heading as='h1' style={heading}>
+                        Хвала што сте се пријавили
+                    </Heading>
+                    <Text style={text}>Обавестићемо вас чим искупљење крене.</Text>
+                    <Text style={textSecondary} className='text-secondary'>
+                        Одевен у Христа, не у трендове.
+                    </Text>
+                </Section>
             </Container>
         </Body>
     </Html>
@@ -69,8 +62,11 @@ const container = {
     maxWidth: '560px',
     margin: '0 auto',
     backgroundColor: '#0a0a0a',
-    padding: '40px 32px',
     border: '1px solid #1f1f1f'
+}
+
+const inner = {
+    padding: '40px 32px'
 }
 
 const logo = {
@@ -83,7 +79,7 @@ const accent = {
     border: 'none',
     borderTop: '2px solid #FE131C',
     width: '48px',
-    margin: '24px 0 32px'
+    margin: '40px 0 32px'
 }
 
 const heading = {
